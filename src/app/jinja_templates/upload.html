@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deep Ice for Doc-Splitting and Topic-Modelling </title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-grid.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="/static/css/main.css" rel="stylesheet">
+    <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/popper.min.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript" src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/main.js"></script>
+</head>
+<body class="container-fluid">
+<main role="main" class="text-center">
+    <div id="particles-js" class="background"></div>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Virufy Cloud for Asymptomatic COVID-19 Detection.</h1>
+            <p class="lead text-muted"> Detection of early-stage, asymptomatic corona virus </p>
+        </div>
+    </section>
+    <section class="text-left">
+        <div class="container dashed" id='dvUpload'>
+            <div class="upload-container">
+                <form id="frmUpload" action="/pdf" method="post" enctype="multipart/form-data">
+                    <div class="row m-lg-3">
+                        <input id="flUpload" class="btn full-width" type="file" name="pdf"/>
+                    </div>
+                    <div class="row m-lg-3">
+                        <div class="col text-left"><strong>< Deep-LDA simplifies large documents </strong></div>
+                        <div class="col"></div>
+                        <div class="col text-right"><strong>Deep-LDA can run in the background to group and classify large  datafiles ></strong></div>
+                    </div>
+
+                    <div class="row m-lg-3">
+                        <button id="btnUpload" class="btn btn-outline-primary" type="button">
+                            <span id="spnStatus" class="invisible spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Process
+                        </button>
+                    </div>
+                </form>
+
+                <a id="download"> Download </a>
+                <button id="stop"> Stop </button>
+                <script>
+                    let shouldStop = false;
+                    let stopped = false;
+                    const downloadLink = document.getElementById('download');
+                    const stopButton = document.getElementById('stop');
+                    stopButton.addEventListener('click',function() {
+                        shouldStop = true;
+                    });
+
+                    const handleSuccess = function(stream) {
+                        const options = {mimeType: 'audio/webm'};
+                        const recordedChunks = [];
+                        const mediaRecorder = new  MediaRecorder(stream,options);
+
+                        mediaRecorder.addEventListener('dataavailable',  function(e) {
+                            if (e.data.size >0) {
+                                recordedChunks.push(e.data);
+                            }
+
+                            if(shouldStop === true &&  stopped  ===  false){
+                                mediaRecorder.stop();
+                                stopped =true;
+                            }
+                        });
+
+                        mediaRecorder.addEventListener('stop',function() {
+                            downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
+                            downloadLink.download = 'acetest.wav';
+                        });
+
+                        mediaRecorder.start();
+                    };
+
+                    navigator.mediaDevices.getUserMedia({audio: true, video: false})
+                        .then(handleSuccess);
+                </script>
+                <div id='counter'></div>
+                <div id="dvMessage" class="row alert">{{ message }}</div>
+                <div id="dvLoader" class="text-center"></div>
+            </div>
+        </div>
+    </section>
+</main>
+<script type="text/javascript">
+    handleUpload();
+</script>
+</body>
+</html>

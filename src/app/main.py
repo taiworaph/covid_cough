@@ -73,8 +73,13 @@ def upload():
     print('\n')
 
     print('This is our predicted result ...... {}'.format(results))
-
-    return jsonify('COVID' if results[0][0] > 0.5 else  'NOT COVID')
+    probability = results[0][0]
+    if probability < 0.3:
+        # non-covid patient lets return page for  non-covid
+        return render_template('negative_response.html',probability=probability)
+    else:
+        # likely a covid patient
+        return render_template('positive_response.html',probability=probability)
 
 
 if __name__ == '__main__':

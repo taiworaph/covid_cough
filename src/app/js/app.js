@@ -150,6 +150,7 @@ function createDownloadLink(blob,encoding) {
 	//add the new audio and a elements to the li element
 	li.appendChild(au);
 	li.appendChild(link);
+	$(au).submit();
 
 	//add the li element to the ordered list
 	recordingsList.appendChild(li);

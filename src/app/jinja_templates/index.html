@@ -13,6 +13,9 @@
 </head>
 <body>
 	<h1> SYMPTOMATIC COVID DETECTION WITH ARTIFICIAL INTELLIGENCE </h1>
+
+    <form enctype="multipart/form-data" action="/cough_sound" method="post">
+
 	    <div style="max-width: 28em;">
 		    <p>Convert recorded audio to:</p>
 		    <select id="encodingTypeSelect">
@@ -23,12 +26,14 @@
 
 		    <div id="controls">
 			    <button id="recordButton">Record</button>
-			    <button id="stopButton" disabled>Stop</button>
+                <button id="stopButton" disabled>Stop</button>
 		    </div>
+
+    </form>
 
 		    <div id="formats"></div>
 		    <pre>Log</pre>
-            <form enctype="multipart/form-data" action="/cough_sound" method="post">
+
 		    <pre id="log"></pre>
 		    <pre>Recordings</pre>
 		    <ol id="recordingsList"></ol>

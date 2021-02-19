@@ -17,7 +17,7 @@ app=flask.Flask(__name__,template_folder="jinja_templates")
 @app.route('/upload', methods=['GET'])
 def uploading():
 
-    response = flask.Response(render_template('index.html'))
+    response = flask.Response(render_template('upload.html'))
 
     return response
 

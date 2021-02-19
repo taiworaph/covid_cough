@@ -14,6 +14,13 @@ import numpy as np
 
 app=flask.Flask(__name__,template_folder="jinja_templates")
 
+@app.route('/upload', methods=['GET'])
+def uploading():
+
+    response = flask.Response(render_template('index.html'))
+
+    return response
+
 @app.route('/coughsound', methods=['POST'])
 def upload():
 
@@ -21,7 +28,8 @@ def upload():
     """ Takes in a waveform sound and outputs the model prediction value"""
 
     # process the waveform file
-    waveform_file = request.files['waveform']
+    waveform_file = request.files['audio']
+    #waveform_file = request.files['waveform']
     audio,sr = librosa.load(waveform_file)
     mfccs = librosa.feature.mfcc(y=audio,sr=sr,n_mfcc=39)
     mfccs_scaled = np.mean(mfccs.T,axis=0)

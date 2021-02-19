@@ -25,8 +25,6 @@ stopButton.addEventListener("click", stopRecording);
 
 
 
-
-
 function startRecording() {
 	console.log("startRecording() called");
 

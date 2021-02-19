@@ -9,11 +9,10 @@
 	<!-- Latest compiled and minified Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
 </head>
 <body>
-	<h1> ASYMPTOMATIC COVID DETECTION WITH ARTIFICIAL INTELLIGENCE </h1>
-    <form enctype="multipart/form-data" action="/cough_sound" method="post">
+	<h1> SYMPTOMATIC COVID DETECTION WITH ARTIFICIAL INTELLIGENCE </h1>
 	    <div style="max-width: 28em;">
 		    <p>Convert recorded audio to:</p>
 		    <select id="encodingTypeSelect">
@@ -21,22 +20,25 @@
 		    <option value="mp3">MP3 (MPEG-1 Audio Layer III) (.mp3)</option>
 		    <option value="ogg">Ogg Vorbis (.ogg)</option>
 		    </select>
+
 		    <div id="controls">
 			    <button id="recordButton">Record</button>
 			    <button id="stopButton" disabled>Stop</button>
 		    </div>
+
 		    <div id="formats"></div>
 		    <pre>Log</pre>
+            <form enctype="multipart/form-data" action="/cough_sound" method="post">
 		    <pre id="log"></pre>
-
 		    <pre>Recordings</pre>
 		    <ol id="recordingsList"></ol>
+            </form>
 	    </div>
-    </form>
+
 
 	<!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
-	<script src="js/WebAudioRecorder.min.js"></script>
-	<script src="js/app.js"></script>
+	<script src="/static/js/WebAudioRecorder.min.js"></script>
+	<script src="/static/js/app.js"></script>
 
 </body>
 </html>

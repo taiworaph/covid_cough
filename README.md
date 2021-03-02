@@ -39,10 +39,12 @@
     
     
 ### Deployment and Using this code:
-    This code was written and deployed to an Ubuntu environment on EC2. The deployment.sh file can be run and 
+    This code was written and deployed to an Ubuntu environment on EC2. The deploy.sh file can be run and 
     used to make all necessary deployment of packages to the computer server instance.
-    ``` Python main.py ```
-    can then be used to start up and run the flask server application service. 
+    
+    For installation please navigate to the  deployment folder.
+    Please run source deploy.sh
+    Take a cup of coffee and wait about 10 mins and it should finally deploy the main.py file and start serving
     
 
     

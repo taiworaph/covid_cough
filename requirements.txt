@@ -32,7 +32,6 @@ cheroot==8.2.1
 CherryPy==18.5.0
 Click==7.0
 cloudpickle==1.2.2
-clyent==1.2.2
 colorama==0.4.1
 contextlib2==0.6.0
 cycler==0.10.0

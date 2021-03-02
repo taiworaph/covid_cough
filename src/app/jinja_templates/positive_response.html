@@ -13,9 +13,15 @@
 </head>
 <body>
     <h1> ASYMPTOMATIC COVID DETECTION WITH ARTIFICIAL INTELLIGENCE </h1>
-    <h3> Based on the inference from the algorithm .......... </h3>
-    <h3> We believe you have a {{ probability }} % chance of being an asymptomatic carrier</h3>
-    <h3> Please wear a mask and stay away from crowded places - Contact your health care provider immediately </h3>
-
+    <h4> Based on the inference from the algorithm... </h4>
+    <div id="positivebox">
+      <img src='./images/red_warning_sign.png' width="20%" class="center">
+      <h1 style="color:red; text-align:center">POSITIVE</h1>
+      <br>
+      <h3 style="color:red"> We believe that you <b>ARE</b> likely an asymptomatic carrier, with probability {{ probability }}%.</h3>
+      <br>
+      <h3 style="color:red"> Please wear a mask and stay away from crowded places. Contact your health care provider immediately. </h3>
+      <h3 style="color:red"> For additional resources, please go to <a href="https://www.cdc.gov/coronavirus/2019-ncov/if-you-are-sick/steps-when-sick.html">CDC.gov</a>.</h3>
+    </div>
 </body>
 </html>

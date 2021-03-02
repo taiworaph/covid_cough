@@ -104,3 +104,18 @@ li {
   margin-top: 0.5rem;
   font-size: 80%;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#positivebox {
+  padding: 50px;
+  background-color: #ffcccc;
+  border: 1px solid red;
+}
+#negativebox {
+  padding: 50px;
+  background-color: #ccffcc;
+  border: 1px solid green;
+}

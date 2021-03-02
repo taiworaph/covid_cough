@@ -15,9 +15,16 @@
 
 <body>
     <h1> ASYMPTOMATIC COVID DETECTION WITH ARTIFICIAL INTELLIGENCE </h1>
-    <h4> Based on the inference from the algorithm .......... </h4>
-    <h4> We believe you are at low risk -- {{ probability }} %-- of being an asymptomatic carrier</h4>
-    <h4> Please still wear a mask to continue to stay healthy and do encourage friends and family to do same. </h4>
-
+    <h4> Based on the inference from the algorithm... </h4>
+    <div id="negativebox">
+      <img src="./images/green_check_sign.png" width="10%" class="center">
+      <h1 style="color:green; text-align:center; text-decoration: underline">NEGATIVE</h1>
+      <h3 style="color:green"> We believe you are at low risk -- {{ probability }}%-- of being an asymptomatic carrier.</h3>
+      <br>
+      <br>
+      <img src='./images/red_reminder_sign.png' width="10%" class="center">
+      <h4> Please still wear a mask to continue to stay healthy and do encourage friends and family to do same. </h4>
+      <h4> For additional resources and current quarantine guidelines, please go to <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC.gov</a>.</h4>
+    </div>
 </body>
 </html>

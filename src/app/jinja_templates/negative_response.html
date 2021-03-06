@@ -9,7 +9,14 @@
 	<!-- Latest compiled and minified Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/style_2.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-16x16.png">
+    <link rel="manifest" href="/static/img/site.webmanifest">
+    <link rel="mask-icon" href="/static/img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 
@@ -17,12 +24,12 @@
     <h1> ASYMPTOMATIC COVID DETECTION WITH ARTIFICIAL INTELLIGENCE </h1>
     <h4> Based on the inference from the algorithm... </h4>
     <div id="negativebox">
-      <img src="./images/green_check_sign.png" width="10%" class="center">
+      <img src="/static/img/green_check_sign.png" width="10%" class="center">
       <h1 style="color:green; text-align:center; text-decoration: underline">NEGATIVE</h1>
       <h3 style="color:green"> We believe you are at low risk -- {{ probability }}%-- of being an asymptomatic carrier.</h3>
       <br>
       <br>
-      <img src='./images/red_reminder_sign.png' width="10%" class="center">
+      <img src='/static/img/red_reminder_sign.png' width="10%" class="center">
       <h4> Please still wear a mask to continue to stay healthy and do encourage friends and family to do same. </h4>
       <h4> For additional resources and current quarantine guidelines, please go to <a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC.gov</a>.</h4>
     </div>

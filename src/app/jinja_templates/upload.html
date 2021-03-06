@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Deep Ice for Doc-Splitting and Topic-Modelling </title>
+    <title> Asymptomatic COVID prediction with ML/AI </title>
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <link href="/static/css/bootstrap-grid.css" rel="stylesheet">
     <link href="/static/css/bootstrap-theme.css" rel="stylesheet">
     <link href="/static/css/main.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon-16x16.png">
+    <link rel="manifest" href="/static/img/site.webmanifest">
+    <link rel="mask-icon" href="/static/img/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
     <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/static/js/popper.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.bundle.js"></script>
@@ -44,6 +51,25 @@
             </div>
         </div>
     </section>
+
+    <section class="jumbotron text-center">
+        <div class="container-dashed">
+
+             <section class="text-left">
+                 <section class=justify-center-l>
+                      <h3 class="jumbotron-heading"> Instructions on how to use this web-page</h3>
+                <h5> 1. Please cough into your phone's microphone and record the sound wave is saved as a .wav file  </h5>
+                <h5> 2. Please ensure the cough lasts between 3-5 sec. </h5>
+                <h5> 3. Please ensure cough  recoding is done in a relatively quiet environment with little background noise</h5>
+                <h5> 4. Click process on the web page. </h5>
+                <h5> The web-page takes the cough sound and parses the mel-frequency and spectogram through our inference engine.</h5>
+                <h5> The inference engine gives the user a score that is the probability of that user having COVID-19 </h5>
+                 </section>
+             </section>
+        </div>
+    </section>
+
+
 </main>
 <script type="text/javascript">
     handleUpload();

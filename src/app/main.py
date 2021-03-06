@@ -1,3 +1,18 @@
+print('***************************************************************************************************************')
+print('***************************************************************************************************************')
+print('***************************************************************************************************************')
+print('###############################################################################################################')
+print('___________#######   ########    ##      ##    ####    ######                ###   ######_____________________')
+print('___________##        ##    ##     ##    ##      ##     ##   ##                ##   ##  ##_____________________')
+print('___________##        ##    ##      ##  ##       ##     ##    ##    ######     ##   ######_____________________')
+print('___________##        ##    ##       ####        ##     ##     ##              ##       ##_____________________')
+print('___________#######   ########        ##        ####    ##########            ####  ######_____________________')
+print('###############################################################################################################')
+print('***************************************************************************************************************')
+print('***************************************************************************************************************')
+print('***************************************************************************************************************')
+
+
 import os
 import flask
 from flask import jsonify,render_template,request,send_file,redirect,url_for
@@ -11,6 +26,7 @@ import pylab
 import os
 import cv2
 import numpy as np
+import logging
 
 app=flask.Flask(__name__,template_folder="jinja_templates")
 
@@ -25,17 +41,24 @@ def uploading():
 def upload():
 
 
-    """ Takes in a waveform sound and outputs the model prediction value"""
+    """ Takes in a waveform sound and outputs the model prediction value """
 
     # process the waveform file
-    waveform_file = request.files['audio']
-    #waveform_file = request.files['waveform']
-    audio,sr = librosa.load(waveform_file)
-    mfccs = librosa.feature.mfcc(y=audio,sr=sr,n_mfcc=39)
-    mfccs_scaled = np.mean(mfccs.T,axis=0)
-    mfccs_1 = np.expand_dims(mfccs_scaled,axis=0)
 
-    print('This is the shape of the waveform file after resampling .... {}'.format(mfccs_1.shape))
+    # Put this in a try-except block to catch errors and if an error occurs just route to an error HTML page
+
+    try:
+        waveform_file = request.files['audio']
+        #waveform_file = request.files['waveform']
+        audio,sr = librosa.load(waveform_file)
+        mfccs = librosa.feature.mfcc(y=audio,sr=sr,n_mfcc=39)
+        mfccs_scaled = np.mean(mfccs.T,axis=0)
+        mfccs_1 = np.expand_dims(mfccs_scaled,axis=0)
+
+        print('This is the shape of the waveform file after resampling .... {}'.format(mfccs_1.shape))
+    except Exception as e:
+        print('A wrong file format or a cough sound wave that was too long was sent to the algorithm')
+        return render_template('upload.html',message=f'Error: {e}')
 
 
     #additional MFCCs
@@ -89,6 +112,11 @@ def upload():
         # likely a covid patient
         return render_template('positive_response.html',probability=probability)
 
+
+def preprocessing(waveform):
+
+    ''' Takes in a wave file and returns the mel frequency and the mel spectogram'''
+    
 
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True

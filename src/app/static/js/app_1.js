@@ -63,4 +63,43 @@ function stopRecording() {
     rec.exportWAV(createDownloadLink);
 }
 
+function createDownloadLink(blob) {
+    var url = URL.createObjectURL(blob);
+    var au = document.createElement('audio');
+    var li = document.createElement('li');
+    var link = document.createElement('a');
+    //add controls to the <audio> element
+    au.controls = true;
+    au.src = url;
+    //link the a element to the blob
+    link.href = url;
+    link.download = new Date().toISOString() + '.wav';
+    link.innerHTML = link.download;
+    //add the new audio and a elements to the li element
+    li.appendChild(au);
+    li.appendChild(link);
+    //add the li element to the ordered list
+
+    var filename = new Date().toISOString();
+    //filename to send to server without extension
+    //upload link
+    var upload = document.createElement('a');
+    upload.href = "#";
+    upload.innerHTML = "Upload";
+    upload.addEventListener("click", function(event) {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function(e) {
+            if (this.readyState === 4) {
+                console.log("Server returned: ", e.target.responseText);
+            }
+        };
+        var fd = new FormData();
+        fd.append("audio", blob, filename);
+        xhr.open("POST", "/coughsound", true);
+        xhr.send(fd);
+    })
+    li.appendChild(document.createTextNode(" ")) //add a space in between
+    li.appendChild(upload) //add the upload link to li
+    recordingsList.appendChild(li);
+}
 

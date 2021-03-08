@@ -17,11 +17,14 @@
     <link rel="mask-icon" href="/static/img/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    <script src="/static/js/record-live-audio.js"></script>
+    <script src="/static/js/app_1.js"></script>
     <script type="text/javascript" src="/static/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="/static/js/popper.min.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.bundle.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.js"></script>
     <script type="text/javascript" src="/static/js/main.js"></script>
+    <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 
 </head>
 <body class="container-fluid">
@@ -61,6 +64,8 @@
             <button id="recordButton">Record</button>
             <button id="stopButton">Stop</button>
         </div>
+        <h3>Recordings</h3>
+        <ol id="recordingsList"></ol>
     </section>
 
     <section class="jumbotron text-center">
@@ -82,8 +87,8 @@
 
 
 </main>
-<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-<script src="/static/js/app_1.js"></script>
+
+
 <script type="text/javascript">
     handleUpload();
 </script>

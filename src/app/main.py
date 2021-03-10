@@ -27,14 +27,23 @@ import os
 import cv2
 import numpy as np
 import logging
+import datetime
+
+logger = logging.getLogger(__name__)
+file_handler = logging.FileHandler('file_error.log')
+file_handler.setLevel(logging.ERROR)
 
 app=flask.Flask(__name__,template_folder="jinja_templates")
+
+
 
 @app.route('/upload', methods=['GET'])
 def uploading():
 
     response = flask.Response(render_template('upload.html'))
     return response
+
+
 
 @app.route('/coughsound', methods=['POST'])
 def upload():
@@ -64,12 +73,14 @@ def upload():
 
     print('This is our predicted result ...... {}'.format(results))
     probability = results[0][0]
-    if probability < 0.3:
+    if probability < 0.2:
         # non-covid patient lets return page for  non-covid
         return render_template('negative_response.html',probability=probability)
     else:
         # likely a covid patient
         return render_template('positive_response.html',probability=probability)
+
+
 
 
 def preprocessing(waveform_file):
@@ -105,6 +116,8 @@ def preprocessing(waveform_file):
 
     final = [mfccs_1,image_1,sample_2]
     return final
+
+
 
 
 if __name__ == '__main__':

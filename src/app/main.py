@@ -135,6 +135,10 @@ def preprocessing(waveform_file):
     return final
 
 def validate_cough(audio, sr):
+    """
+    Takes in audio and sampling rate and returns probability of audio being
+    a cough.
+    """
     model_dir = '../data'
     with open (f'{model_dir}/cough_classifier', 'rb') as pickle_f:
         detection_model = pickle.load(pickle_f)

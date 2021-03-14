@@ -145,4 +145,4 @@ def validate_cough(audio, sr):
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True
     app.config['TEMPLATES_AUTO_RELOAD'] = True
-    app.run(host='0.0.0.0', port=8081, threaded=True, debug=False)
+    app.run(host='0.0.0.0', port=8080, threaded=True, debug=False)

@@ -37,7 +37,10 @@ from coughvid.DSP import classify_cough
 
 logger = logging.getLogger(__name__)
 file_handler = logging.FileHandler('file_error.log')
+f_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(f_format)
 file_handler.setLevel(logging.ERROR)
+logger.addHandler(file_handler)
 
 app=flask.Flask(__name__,template_folder="jinja_templates")
 
@@ -62,6 +65,7 @@ def upload():
 
     except Exception as e:
         print('A wrong file format or a cough sound wave that was too long was sent to the algorithm')
+        logger.error( "This error propagated :" + str(e))
         return render_template('upload.html',message=f'Error: {e}')
 
     # create a default graph to use for prediction of the keras model

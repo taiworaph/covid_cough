@@ -90,7 +90,7 @@ def process(wavepath):
     s_db = librosa.power_to_db(melspect, ref=np.max)  # convert to image + save + reload
     # save and reload spectrogram image files
     librosa.display.specshow(s_db)
-    savepath = os.path.join('/Users/raphael.alabi/Downloads/', 'test_file' + '.png')
+    savepath = os.path.join('../data/data_positive_negative/', 'test_file' + '.png')
     pylab.savefig(savepath, bbox_inches=None, pad_inches=0)
     pylab.close()
 

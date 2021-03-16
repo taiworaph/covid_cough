@@ -1,0 +1,1 @@
+src/data/Resnet_two_branch_with_bestcutoff_at_0.012245.hdf5 filter=lfs diff=lfs merge=lfs -text

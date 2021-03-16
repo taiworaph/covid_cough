@@ -66,13 +66,14 @@ def upload():
     except Exception as e:
         print('A wrong file format or a cough sound wave that was too long was sent to the algorithm')
         logger.error( "This error propagated :" + str(e))
-        return render_template('upload.html',message=f'Error: {e}')
+        return render_template('upload.html',message='Please can you upload the right file format or there was no cough detected')
 
     # create a default graph to use for prediction of the keras model
     graph=tf.compat.v1.get_default_graph()
 
     with graph.as_default():
-        model = load_model('../data/020--0.610--0.050.hdf5')
+        #model = load_model('../data/020--0.610--0.050.hdf5')
+        model = load_model('../data/Resnet_two_branch_with_bestcutoff_at_0.012245.hdf5')
         results = model.predict(batch_0)
 
     print('\n')
@@ -82,7 +83,7 @@ def upload():
     probability = results[0][0]
     if probability < 0.0001:
         return render_template('negative_response.html',probability='less than 0.01')
-    elif probability < 0.2:
+    elif probability < 0.01224:
         # non-covid patient lets return page for  non-covid
         return render_template('negative_response.html',probability=str(round(probability*100, 2)))
     else:
@@ -129,10 +130,11 @@ def preprocessing(waveform_file):
     print('This is the image shape after re-sampling .....{}'.format(image_1.shape))
 
     # additional user information passed in as one-hot encoded vector
-    sample = [1, 1]
-    sample_2 = np.expand_dims(sample, axis=0)
+    #sample = [1, 1]
+    #sample_2 = np.expand_dims(sample, axis=0)
 
-    final = [mfccs_1,image_1,sample_2]
+    #final = [mfccs_1,image_1,sample_2]
+    final = [mfccs_1,image_1]
     return final
 
 def validate_cough(audio, sr):

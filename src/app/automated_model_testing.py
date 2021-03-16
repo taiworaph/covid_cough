@@ -48,7 +48,7 @@ def automated_testing(path_to_models,cut_off):
             for file in files:
                 all_positive += 1
                 wave_path = positive + file
-                wavedata = process(wave_path)
+                wavedata = process(model_name,wave_path)
                 results = model.predict(wavedata)
                 if float(results[0][0]) > float(cut_off):
                     true_positive += 1
@@ -63,7 +63,7 @@ def automated_testing(path_to_models,cut_off):
             for file in files:
                 all_negative += 1
                 wave_path = negative + file
-                wavedata = process(wave_path)
+                wavedata = process(model_name,wave_path)
                 results = model.predict(wavedata)
                 if float(results[0][0]) < float(cut_off):
                     true_negative += 1
@@ -76,7 +76,7 @@ def automated_testing(path_to_models,cut_off):
     return model_results
 
 
-def process(wavepath):
+def process(model_name,wavepath):
     ''' Processes the waveform file and generates the vector to send to the model for inference '''
     audio, sr = librosa.load(wavepath)
     mfccs = librosa.feature.mfcc(y=audio, sr=sr, n_mfcc=39)
@@ -100,13 +100,16 @@ def process(wavepath):
     img_rescale = img_resize / 255.
 
     image_1 = np.expand_dims(img_rescale, axis=0)
+
     # print('This is the image shape after re-sampling .....{}'.format(image_1.shape))
     # additional user information passed in as one-hot encoded vector
-    sample = [1, 1]
-    sample_2 = np.expand_dims(sample, axis=0)
+    if model_name == '020--0.610--0.050.hdf5':
+        sample = [1, 1]
+        sample_2 = np.expand_dims(sample, axis=0)
 
-    final = [mfccs_1, image_1, sample_2]
-
+        final = [mfccs_1, image_1, sample_2]
+    else:
+        final = [mfccs_1, image_1]
     return final
 
 if __name__ == "__main__":

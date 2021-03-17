@@ -66,6 +66,7 @@ def upload():
     except Exception as e:
         print('A wrong file format or a cough sound wave that was too long was sent to the algorithm')
         logger.error( "This error propagated :" + str(e))
+
         return render_template('upload.html',message='Please can you upload the right file format or there was no cough detected')
 
     # create a default graph to use for prediction of the keras model
@@ -94,8 +95,19 @@ def upload():
 def preprocessing(waveform_file):
 
     ''' Takes in a wave file and returns the mel frequency and the mel spectogram '''
+
     audio, sr = librosa.load(waveform_file)
     waveform_file.stream.seek(0)
+
+    audio_len = librosa.get_duration(audio)
+
+    if audio_len > 30:
+        raise ValueError(""" This audio clip is too long. Please re-upload a 
+                              file less than 30 seconds long. """)
+    if audio_len < 0.5:
+        raise ValueError(""" This audio clip is too short. Please re-upload a 
+                              file greater than half a second long. """)
+
     
     ## Validate Cough
     sr1, audio1 = wavfile.read(waveform_file)

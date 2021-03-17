@@ -37,6 +37,9 @@
     The next iteration of this Machine Learning System will attempt to solve the problem of horizontal scalability using 
     AWS lambda services.
     
+    There is automated model evaluation script called automated_model_testing.py. This ensures that multiple models can be 
+    uploaded and evaluated for latency and performance prior to being deployed to customers/client.
+    
     
 ### Deployment and Using this code:
     This code was written and deployed to an Ubuntu environment on EC2. The deploy.sh file can be run and 

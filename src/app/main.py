@@ -66,8 +66,12 @@ def upload():
     except Exception as e:
         print('A wrong file format or a cough sound wave that was too long was sent to the algorithm')
         logger.error( "This error propagated :" + str(e))
+        default_message = "An error occurred when reading your file. Please make sure the file format is .wav."
+        err_message = default_message
+        if "too short" in str(e) or "too long" in str(e) or "not detected" in str(e):
+            err_message = str(e)
 
-        return render_template('upload.html',message='Please can you upload the right file format or there was no cough detected')
+        return render_template('upload.html',message=err_message)
 
     # create a default graph to use for prediction of the keras model
     graph=tf.compat.v1.get_default_graph()

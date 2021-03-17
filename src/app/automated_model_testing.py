@@ -8,6 +8,7 @@ import os
 import cv2
 import numpy as np
 import sys
+import time
 
 def automated_testing(path_to_models,cut_off):
 
@@ -25,6 +26,7 @@ def automated_testing(path_to_models,cut_off):
     model_results = {}
     for model_name in model_names:
         model_results[model_name] = {}
+        initial_time = time.time()
         all_positive = 0
         true_positive = 0
         false_positive = 0
@@ -69,8 +71,10 @@ def automated_testing(path_to_models,cut_off):
                     true_negative += 1
                 else:
                     false_negative += 1
+        final_time = time.time()
         model_results[model_name]['sensitvity'] = true_positive / (true_positive + false_negative)
         model_results[model_name]['specificity'] = true_negative / (true_negative + false_positive)
+        model_results[model_name]['latency'] = (final_time-initial_time)/(all_positive+all_negative)
         print('Here are the model performance for model: {} and result {}'.format(model_name, model_results[
             model_name]))
     return model_results

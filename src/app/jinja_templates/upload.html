@@ -32,8 +32,8 @@
     <div id="particles-js" class="background"></div>
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">Virufy Cloud for Asymptomatic COVID-19 Detection.</h1>
-            <p class="lead text-muted"> Detection of early-stage, asymptomatic corona-virus </p>
+            <h1 class="jumbotron-heading">Virufy Cloud for Asymptomatic COVID-19 Detection</h1>
+            <p class="lead text-muted"> Detection of early-stage, asymptomatic coronavirus </p>
         </div>
     </section>
 
@@ -59,27 +59,37 @@
     </section>
 
 
+    <!--- 
     <section class="text-left">
         <div id="controls">
             <button id="recordButton">Record</button>
-            <button id="stopButton">Stop</button>
+            <button id="pauseButton" disabled>Pause</button>
+            <button id="stopButton" disabled>Stop</button>
         </div>
-        <h3>Recordings</h3>
-        <ol id="recordingsList"></ol>
+        <div id="formats">Format: start recording to see sample rate</div>
+        <p><strong>Recordings:</strong></p>
+        <ol id="recordingsList"></ol> -->
+        <!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+        <!--
+        <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+        <script src="/static/js/app.js"></script>
     </section>
+            -->
+
 
     <section class="jumbotron text-center">
         <div class="container-dashed">
 
              <section class="text-left">
                  <section class=justify-center-l>
-                      <h3 class="jumbotron-heading"> Instructions on how to use this web-page</h3>
-                <h5> 1. Please cough into your phone's microphone and record the sound wave is saved as a .wav file  </h5>
-                <h5> 2. Please ensure the cough lasts between 3-5 sec. </h5>
-                <h5> 3. Please ensure cough  recoding is done in a relatively quiet environment with little background noise</h5>
-                <h5> 4. Click process on the web page. </h5>
-                <h5> The web-page takes the cough sound and parses the mel-frequency and spectogram through our inference engine.</h5>
-                <h5> The inference engine gives the user a score that is the probability of that user having COVID-19 </h5>
+                      <h3 class="jumbotron-heading"> Instructions on how to use this webpage: </h3>
+                <h5> 1. Please record your cough and convert to a .wav file if needed.  </h5>
+                <h5> 2. The cough should ideally last between 2-4 seconds. </h5>
+                <h5> 3. Upload the .wav file to the web page. </h5>
+                <h5> 4. Please ensure cough  recoding is done in a relatively quiet environment with little background noise. </h5>
+                <h5> 5. Click process on the webpage. </h5>
+                <h5> The webpage takes the cough sound and parses the mel-frequency and spectogram through our inference engine.</h5>
+                <h5> The model outputs a score that is the probability of that user having COVID-19 </h5>
                  </section>
              </section>
         </div>
